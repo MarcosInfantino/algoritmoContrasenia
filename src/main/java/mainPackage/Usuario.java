@@ -11,8 +11,8 @@ public class Usuario {
     public String password(){
         return password;
     }
-    public void registrate(String usuario, String contrasena){
+    public void registrate(String usuario, String contrasenia){
         user=usuario;
-        password=contrasena;
+        password=contrasenia;
     }
 }
