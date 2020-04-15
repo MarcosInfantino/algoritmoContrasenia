@@ -79,8 +79,13 @@ public class validadorDeContrasenias {
     // -------------------------- Eliminar Espacios -------------------------- //
 
     public String eliminarEspacios(String contrasenia) {
+        boolean seCambio = false;
         while(contrasenia.contains("  ")){
             contrasenia.replaceAll("  "," ");
+            seCambio = true;
+        }
+        if(seCambio){
+            System.out.println("Los multiples espacios de tu contrasenia se han modificado por un espacio solo");
         }
         return contrasenia;
     }
