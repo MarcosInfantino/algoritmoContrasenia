@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class validadorDeContrasenias {
+public class ValidadorDeContrasenias {
 
     ArrayList<String> malasContrasenias;
 
@@ -18,7 +18,7 @@ public class validadorDeContrasenias {
 
     //-------------------------- Cargar Contraseñas --------------------------//
 
-    public validadorDeContrasenias() {
+    public void validadorDeContrasenias() {
         this.cargarContraseniasComunes();
     }
 
@@ -80,10 +80,11 @@ public class validadorDeContrasenias {
 
     public String eliminarEspacios(String contrasenia) {
         boolean seCambio = false;
-        while(contrasenia.contains("  ")){
+        if(contrasenia.contains("W")){ System.out.println("Llego perro");}
+        /*while(contrasenia.contains("  ")){
             contrasenia.replaceAll("  "," ");
             seCambio = true;
-        }
+        }*/
         if(seCambio){
             System.out.println("Los multiples espacios de tu contrasenia se han modificado por un espacio solo");
         }

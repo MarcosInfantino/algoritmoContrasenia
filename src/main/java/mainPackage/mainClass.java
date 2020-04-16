@@ -1,6 +1,5 @@
 package mainPackage;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 enum Opcion{
@@ -10,17 +9,21 @@ enum Opcion{
 }
 public class mainClass {
     public static void main(String [] args) {
-        validadorDeContrasenias v=new validadorDeContrasenias();
-       System.out.println("Ingrese la contraseña: ");
+        ValidadorDeContrasenias v=new ValidadorDeContrasenias();
+        System.out.println("Ingrese la contraseña: ");
         Scanner var= new Scanner(System.in);
-
+        System.out.println("Confirme su contraseña: ");
+        Scanner varConfirmacion= new Scanner(System.in);
        // System.out.println(var);
-
-        if(v.contraseniaSegura(var.nextLine())){
-            System.out.println("La contraseña es segura.");
-        }else{
-            System.out.println("La contraseña es insegura.");
-        }
-
+        //if(varConfirmacion == var) {
+            v.eliminarEspacios(var.nextLine());
+            if (v.contraseniaSegura(var.nextLine())) {
+                System.out.println("La contraseña es segura.");
+            } else {
+                System.out.println("La contraseña es insegura.");
+            }
+        //} else {
+            System.out.println("Las contraseñas no coinciden.");
+        //}
     }
 }
