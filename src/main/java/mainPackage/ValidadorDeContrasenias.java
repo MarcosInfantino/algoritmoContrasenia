@@ -43,15 +43,17 @@ public class ValidadorDeContrasenias {
     // -------------------------- Validaciones Debiles -------------------------- //
 
     public boolean contraseniaSegura(String contrasenia) {
-        return cantidadCaracteresCorrectos(contrasenia) &&
-                !esContraseniaComun(contrasenia) &&
-                !mismoCaracter(contrasenia);
+        boolean aux = this.cantidadCaracteresCorrectos(contrasenia) &&
+                !(this.esContraseniaComun(contrasenia) &&
+                this.mismoCaracter(contrasenia));
+        if(!aux){ System.out.println("Contraseña no aceptada"); }
+        return aux;
     }
 
     public boolean cantidadCaracteresCorrectos(String contrasenia) {
         boolean x = contrasenia.length() >= 8 && contrasenia.length() <= 64;
         if (!x) {
-            System.out.println("La cantidad de caracteres es incorrecta");
+            System.out.println("La cantidad de caracteres es incorrecta, deber ser mayor a 8 y menor a 64");
         }
         return x;
     }
@@ -59,19 +61,23 @@ public class ValidadorDeContrasenias {
     public boolean esContraseniaComun(String contrasenia) {
         boolean x = malasContrasenias.contains(contrasenia);
         if (x) {
-            System.out.println("Es una contraseña común");
+            System.out.println("Contrasenia debil");
         }
         return x;
     }
 
     public boolean mismoCaracter(String contrasenia) {
-        char primerCaracter = contrasenia.charAt(0);
+        char caracterGuia = contrasenia.charAt(0);
         int i;
-        for (i = 0; i < contrasenia.length() && contrasenia.charAt(i) != primerCaracter; i++) {
+        for (i = 0; i < contrasenia.length() &&
+                contrasenia.charAt(i) != caracterGuia &&
+                contrasenia.charAt(i) + 1 != contrasenia.charAt(i+1); i++) {
+            caracterGuia = contrasenia.charAt(i);
         }
         boolean x = i != contrasenia.length();
+        //if(x){System.out.println("Aca estoy");}
         if (x) {
-            System.out.println("La contraseña repite caracteres todo el tiempo");
+            System.out.println("La contrasenia tiene al menos dos caracteres iguales seguidos o dos caracteres secuenciales seguidos");
         }
         return x;
     }
